@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+	<bean id="test2" class="song.test.Test2" lazy-init="true">
+		<property name="str" value="4" />
+		<property name="bl" value="false" />
+	</bean>
+
+	<bean id="test1" class="song.test.Test1">
+		<property name="test2" ref="test2" />
+
+	</bean>
+
+	<!-- 切面 -->
+	<bean id="testAop" class="song.test.TestAop">
+	</bean>
+
+	<!-- 启动aop代理工厂 。目前只实现 动态代理只会拦截切点接口方法 -->
+	<bean id="proxyFactory" class="pers.shuaibi.aop.AOP_ProxyFactoryBean">
+	</bean>
+
+
+	<!-- expression: xxx.xxx.*:拦截包及其子包下所有类 xxx.xxx:拦截当前包下所有类 xxx.xxx.class:拦截当前类 
+		xxx.xxx.class.method:拦截当前类中指定方法 -->
+	<!--定义切点 -->
+	<aop:pointcut id="logpoint" expression="song.test.*"></aop:pointcut>
+	<aop:aspect ref="testAop"> <!-- 指定切面 -->
+		<!-- 连接点 -->
+		<aop:conpoint pointcut-ref="logpoint" method="after"
+			type="after"></aop:conpoint>
+		<aop:conpoint pointcut-ref="logpoint" method="before"
+			type="before"></aop:conpoint>
+	</aop:aspect>
+
+
+</beans>
