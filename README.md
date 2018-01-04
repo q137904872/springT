@@ -13,10 +13,12 @@
 * 切面
 * 连接点
 
-## 加载配置文件：
+### 1. 加载配置文件：
 直接采取spring配置文件格式：
-![](https://github.com/q137904872/logo/blob/master/logo/%60PK9AP9S%60B3M%5BX9Y1U3G~IR.png)\<br>
+![](https://github.com/q137904872/logo/blob/master/logo/%60PK9AP9S%60B3M%5BX9Y1U3G~IR.png)
 
 配置文件加载接口：
+类实例化工厂会调用此接口的这几个方法获取处理好的配置信息；
+![](https://github.com/q137904872/logo/blob/master/logo/xml加载接口.png)
 
 
