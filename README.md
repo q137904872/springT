@@ -1,4 +1,4 @@
-# 帅比带你造轮子之IOC,AOP
+ # 帅比带你造轮子之IOC,AOP
 ###### qq:137904872
 ###### 装逼吹水甩锅交流群：53141769
 目前只实现通过xml读取配置尚未使用注解，aop功能使用动态代理未使用cglib使用注意先实现接口，以后有空再完善；
@@ -13,5 +13,10 @@
 * 切面
 * 连接点
 
-##加载配置文件：
-![](https://github.com/q137904872/logo/blob/master/logo/%60PK9AP9S%60B3M%5BX9Y1U3G~IR.png)
+## 加载配置文件：
+直接采取spring配置文件格式：
+![](https://github.com/q137904872/logo/blob/master/logo/%60PK9AP9S%60B3M%5BX9Y1U3G~IR.png)\<br>
+
+配置文件加载接口：
+
+
