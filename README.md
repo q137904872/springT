@@ -36,4 +36,8 @@ IOC（控制反转）让容器完成类的实例化并通过注入给我们使�
 ![](https://github.com/q137904872/logo/blob/master/logo/实例化.png)
 
 ##### * 属性的注入：
-通过配置文件的配置信息将需要注入的属性通过反射调用set方法注入属性；
+通过配置文件的配置信息将需要注入的属性通过反射调用set方法注入属性；<br>
+判断值注入还是对象注入;
+![](https://github.com/q137904872/logo/blob/master/logo/属性注入调用.png)
+取得要注入属性,通过set加属性名获取该属性set方法反射调用即可完成注入,若为值注入因从配置文件中获取的都是String所有要先进行转换;
+![](https://github.com/q137904872/logo/blob/master/logo/反射调用set方法.png)
