@@ -32,8 +32,8 @@ IOC,AOP经常见这样说那样说，其实当你去尝试了解实现原理时�
 IOC（控制反转）让容器完成类的实例化并通过注入给我们使用；
 ##### * 类的实例化：
 通过配置文件的配置信息将要实例化的类通过反射完成实例化并放入map供以后取用；
-![](https://github.com/q137904872/logo/tree/master/logo/实例化调用.png)
-![](https://github.com/q137904872/logo/tree/master/logo/实例化.png)
+![](https://github.com/q137904872/logo/blob/master/logo/实例化调用.png)
+![](https://github.com/q137904872/logo/blob/master/logo/实例化.png)
 
 ##### * 属性的注入：
 通过配置文件的配置信息将需要注入的属性通过反射调用set方法注入属性；
