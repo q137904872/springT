@@ -43,12 +43,12 @@ IOC（控制反转）让容器完成类的实例化并通过注入给我们使�
 
 ### 3. AOP:
 ##### * 动态代理实现（动态代理是jdk自带的没用过的朋友可以先去试一下）
-我们都知道jdk原生的动态代理生成代理类是使用Proxy.newProxyInstance(被代理对象类加载器, 被代理对象的接口方法, 实现InvocationHandler接口的对象)方法;
-![](https://github.com/q137904872/logo/blob/master/logo/生成代理类.png)
-而InvocationHandler接口只有一个方法invoke(Object proxy/代理对象, Method method/被代理对象需被执行的方法, Object[] args/方法的参数),method参数就是被代理对象当前需被执行的方法,在它invoke之前后加上内容就是前后拦截;
-![](https://github.com/q137904872/logo/blob/master/logo/invoke.png)
-Proxy.newProxyInstance(被代理对象类加载器, 被代理对象的接口, 实现InvocationHandler接口的对象)返回的代理类是使用字节码编辑技术编辑一个继承Proxy类 实现被代理类的接口(第二个参数)的.class实例化返回的对象(有兴趣的朋友可以反编译出来看下),如此代理与被代理类都实现一样的接口方法(so动态代理只能代理有接口的方法),而代理类的接口方法中都会调用InvocationHandler(第三个参数).invoke(Object proxy/代理类自身this, Method method/与当前方法名相同的被代理对象的接口方法(第二个参数), Object[] args/方法的参数),由此完成代理,而我们通过完成invoke方法的编写实现前后拦截;
+我们知道AOP其实就是在不修改方法的前提下在前后加上一些内容,这个方法我们把它叫切点,内容叫切面.而使用JDK自带的动态代理生成代理类我们只需要通过InvocationHandler.invoke接口方法能轻而易举的把切点与切面的内容拼接在一起.而如何通过配置文件灵活的把不同切点与切面组合在一起就是我们要做的.
 
-###### <--以上关于动态代理讲解未下方做铺垫，略简略不懂得建议网上找详细讲解-->
+在invoke中我们在拦截链中获取拦截当前方法的切面方法,然后按照切面方法的type先后执行切面方法;
+![](https://github.com/q137904872/logo/blob/master/logo/拼接.png)
+AOP_ConnectionPoint 包含切面信息,与执行当前本身切面方法
+![](https://github.com/q137904872/logo/blob/master/logo/连接点.png)
 
-
+在配置中把切点与切面通过连接点关联在一起,通过数据关系上理解切点与切面是多对多的关系,但是这样并不方便我们实现,而我们可以把配置信息处理成 切点方法——需要加上哪些切面方法 这样一对多的关系的一个集合 Map<String,List<AOP_ConnectionPoint>> interceptorChain拦截链;
+![](https://github.com/q137904872/logo/blob/master/logo/配置.png)
