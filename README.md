@@ -49,4 +49,6 @@ IOC（控制反转）让容器完成类的实例化并通过注入给我们使�
 ![](https://github.com/q137904872/logo/blob/master/logo/invoke.png)
 Proxy.newProxyInstance(被代理对象类加载器, 被代理对象的接口, 实现InvocationHandler接口的对象)返回的代理类是使用字节码编辑技术编辑一个继承Proxy类 实现被代理类的接口(第二个参数)的.class实例化返回的对象(有兴趣的朋友可以反编译出来看下),如此代理与被代理类都实现一样的接口方法(so动态代理只能代理有接口的方法),而代理类的接口方法中都会调用InvocationHandler(第三个参数).invoke(Object proxy/代理类自身this, Method method/与当前方法名相同的被代理对象的接口方法(第二个参数), Object[] args/方法的参数),由此完成代理,而我们通过完成invoke方法的编写实现前后拦截;
 
+###### <--以上关于动态代理讲解未下方做铺垫，略简略不懂得建议网上找详细讲解-->
+
 
